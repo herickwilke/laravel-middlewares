@@ -17,7 +17,10 @@ class PrimeiroMiddleware
      */
     public function handle($request, Closure $next)
     {
-        Log::debug('Passou pelo primeiro middleware');
-        return $next($request);
+        Log::debug('Passou pelo primeiro middleware, ANTES');
+        $response = $next($request);
+        Log::debug('Passou pelo primeiro middleware, DEPOIS');
+        // return $response;
+        return response('Alterei a minha resposta', 201);
     }
 }
